@@ -6,15 +6,26 @@
     <title>KOPARA_coffee</title>
 
     <!-- my styles -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body id="beranda">
+    <!-- SKIP LINK -->
+    <a class="skip-link" href="#main-content">Lewati navigasi, langsung ke konten</a>
+
     <!-- HEADER / NAVBAR SECTION START -->
-    <header></header>
+    <header>
+      <nav aria-label="Navigasi utama">
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="#kontak">Kontak Singkat</a></li>
+        </ul>
+      </nav>
+    </header>
     <!-- HEADER / NAVBAR SECTION END -->
-    
+
     <!-- MAIN CONTENT SECTION START -->
-    <main class="page">
+    <main id="main-content" class="page">
       <!-- HERO SECTION START -->
       <section class="hero">
         <p class="eyebrow">UMKM Pekalongan</p>
@@ -29,22 +40,23 @@
       <!-- HERO SECTION END -->
 
       <!-- PRODUCTS SECTION START -->
-      <section class="products" aria-label="Produk unggulan">
+      <section class="products" aria-labelledby="judul-produk">
+        <h2 id="judul-produk" class="sr-only">Produk Unggulan</h2>
         <article class="product-card">
-          <h2>Kopi Tubruk Signature</h2>
+          <h3>Kopi Tubruk Signature</h3>
           <p>Rasa klasik, aroma kuat, dan cocok untuk pagi yang pelan.</p>
-          <span>Rp18.000</span>
+          <p><strong>Rp18.000</strong></p>
         </article>
         <article class="product-card">
-          <h2>Cold Brew Aren</h2>
+          <h3>Cold Brew Aren</h3>
           <p>Segar, ringan, dan manisnya pas untuk cuaca panas.</p>
-          <span>Rp22.000</span>
+          <p><strong>Rp22.000</strong></p>
         </article>
       </section>
       <!-- PRODUCTS SECTION END -->
-      
+
       <!-- INFORMASI SECTION START -->
-      <section class="products" aria-label="Informasi">
+      <section id="tentang-kami" class="products" aria-label="Informasi">
         <article class="product-card">
           <h2>Jam Buka</h2>
           <p>Setiap Hari: 08:00 - 23:00</p>
@@ -55,15 +67,31 @@
         </article>
       </section>
       <!-- INFORMASI SECTION END -->
+
+      <!-- KONTAK SINGKAT SECTION START -->
+      <section id="kontak" class="products" aria-label="Kontak">
+        <article class="product-card">
+          <h2>Kontak </h2>
+          <p>Pekalongan, Jawa Tengah<br />Layanan: 08:00 - 23:00</p>
+          <p>
+            <a href="https://wa.me/628512453550"
+              >Hubungi KOPARA via WhatsApp</a
+            >
+          </p>
+        </article>
+      </section>
+      <!-- KONTAK SINGKAT SECTION END -->
     </main>
     <!-- MAIN CONTENT SECTION END -->
-    
+
     <!-- FOOTER SECTION START -->
-    <footer></footer>
+    <footer>
+      <p>&copy; 2026 KOPARA Coffee — UMKM Pekalongan, Jawa Tengah</p>
+    </footer>
     <!-- FOOTER SECTION END -->
 
     <!-- SCRIPT SECTION START -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <!-- SCRIPT SECTION END -->
   </body>
 </html>
