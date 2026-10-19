@@ -115,13 +115,18 @@ main,
 /* ----------------------------------------------------------
    NAVIGATION / HEADER
    ---------------------------------------------------------- */
-header {
+.nav {
   background: var(--color-primary);
   padding: var(--space-md) 32px;
   display: flex;
+  gap: var(--space-md);
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.brand {
+  margin-bottom: 0;
 }
 
 .nav-logo {
@@ -130,14 +135,18 @@ header {
   object-fit: contain;
 }
 
-nav ul,
-nav {
+.nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-sm);
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav li {
+  margin: 0;
 }
 
 nav a {
@@ -182,10 +191,28 @@ audio:focus-visible {
    HERO SECTION
    ---------------------------------------------------------- */
 .hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-lg);
+  align-items: center;
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
   color: white;
   padding: var(--space-xl);
+}
+
+.hero--single {
+  grid-template-columns: 1fr;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: var(--radius-md);
 }
 
 .eyebrow {
@@ -198,7 +225,7 @@ audio:focus-visible {
 
 h1 {
   margin: 0;
-  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-size: 3rem;
 }
 
 .lead {
@@ -214,6 +241,7 @@ h1 {
   padding: 12px 18px;
   font-weight: 700;
   cursor: pointer;
+  align-self: flex-start;
 }
 
 /* ----------------------------------------------------------
@@ -227,11 +255,32 @@ h1 {
 }
 
 .product-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
   padding: var(--space-md);
   box-shadow: 0 10px 30px rgb(47 33 24 / 10%);
+}
+
+.product-badge {
+  align-self: flex-start;
+  padding: 0.25rem var(--space-sm);
+  color: var(--color-primary-strong);
+  font-size: 0.875rem;
+  font-weight: 800;
+  background: #fef3c7;
+  border-radius: 999px;
+}
+
+.card-actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: auto;
 }
 
 /* ----------------------------------------------------------
@@ -277,8 +326,16 @@ footer {
    HALAMAN PRODUK (produk.html)
    ---------------------------------------------------------- */
 
-/* --- Gambar produk --- */
+/* --- Produk unggulan --- */
+.produk-list {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
 .produk-figure {
+  flex: 1;
+  min-width: 280px;
   margin: 0 0 32px;
   text-align: center;
 }
@@ -295,6 +352,46 @@ footer {
   color: var(--color-muted);
   font-size: 0.9rem;
   font-style: italic;
+}
+
+/* --- Grid produk pilihan --- */
+.product-grid,
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.price {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.button {
+  display: inline-block;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.button:hover {
+  background: var(--color-primary-hover);
+}
+
+.card-actions a {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.card-actions a.button {
+  color: #ffffff;
 }
 
 /* --- Tabel harga produk --- */
@@ -341,10 +438,8 @@ footer {
    ---------------------------------------------------------- */
 
 /* --- Grid galeri foto --- */
-.gallery-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-lg);
+.gallery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 20px;
 }
 
@@ -397,6 +492,69 @@ audio {
 }
 
 /* ----------------------------------------------------------
+   HALAMAN TENTANG KAMI (tentang.html)
+   ---------------------------------------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-areas:
+    "card1 image"
+    "card2 image"
+    "card3 image";
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-md);
+  align-items: stretch;
+  margin-top: var(--space-lg);
+}
+
+.about-card--1 {
+  grid-area: card1;
+}
+
+.about-card--2 {
+  grid-area: card2;
+}
+
+.about-card--3 {
+  grid-area: card3;
+}
+
+.about-media {
+  grid-area: image;
+  margin: 0;
+  display: flex;
+}
+
+.about-media .etalase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  border-radius: var(--radius-md);
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-tags {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.about-tag {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.25rem var(--space-sm);
+  background: var(--color-surface-alt);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+/* ----------------------------------------------------------
    HALAMAN FORM & KONTAK (kontak.html)
    ---------------------------------------------------------- */
 
@@ -418,7 +576,7 @@ fieldset {
 }
 
 /* ==========================================================
-FORM KONTAK — KOPARA Coffee
+FORM KONTAK ?" KOPARA Coffee
 ========================================================== */
 
 #form-kontak {
@@ -593,25 +751,3 @@ CATATAN AUDIT DEVTOOLS: TEMUAN KONFLIK CASCADE & SPECIFICITY
                      menang karena urutan kemunculan kode (source order) dan deklarasi
                      padding serta background memiliki bobot flag !important.
 ========================================================== */
-
-/* ==========================================================
-RESPONSIVE (Media Queries)
-========================================================== */
-
-@media (max-width: 600px) {
-#form-kontak input[type="text"],
-#form-kontak input[type="email"],
-#form-kontak input[type="tel"],
-#form-kontak select,
-#form-kontak textarea {
-font-size: 16px;
-}
-
-#form-kontak fieldset {
-padding: 15px;
-}
-
-#preview-form {
-font-size: 13px;
-}
-}

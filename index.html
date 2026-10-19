@@ -13,8 +13,8 @@
     <a class="skip-link" href="#main-content">Lewati navigasi, langsung ke konten</a>
 
     <!-- HEADER / NAVBAR SECTION START -->
-    <header>
-      <div class="logo-container">
+    <header class="nav">
+      <div class="logo-container brand">
         <img src="assets/images/logo_kopara_2-removebg-preview.png" alt="Logo KOPARA Coffee" class="nav-logo">
       </div>
       <nav aria-label="Navigasi utama">
@@ -32,15 +32,22 @@
     <!-- MAIN CONTENT SECTION START -->
     <main id="main-content" class="page">
       <!-- HERO SECTION START -->
-      <section class="hero">
-        <p class="eyebrow">UMKM Pekalongan</p>
-        <h1>KOPARA coffee</h1>
-        <p class="lead">
-          Kopi lokal pilihan untuk teman belajar, bekerja, dan berdiskusi.
-        </p>
-        <button id="promoButton" class="cta-button">
-          Lihat promo hari ini
-        </button>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">UMKM Pekalongan</p>
+          <h1 id="hero-title">KOPARA coffee</h1>
+          <p class="lead">
+            Kopi lokal pilihan untuk teman belajar, bekerja, dan berdiskusi.
+          </p>
+          <button id="promoButton" type="button" class="cta-button">
+            Lihat promo hari ini
+          </button>
+        </div>
+        <img
+          class="hero-image"
+          src="assets/images/tentang_kami.png"
+          alt="Suasana etalase kedai kopi KOPARA Coffee dengan sajian kopi hangat"
+        />
       </section>
       <!-- HERO SECTION END -->
 
@@ -77,7 +84,7 @@
 
     <!-- FOOTER SECTION START -->
     <footer>
-      <p>&copy; 2026 KOPARA Coffee — UMKM Pekalongan, Jawa Tengah</p>
+      <p>&copy; 2026 KOPARA Coffee  UMKM Pekalongan, Jawa Tengah</p>
     </footer>
     <!-- FOOTER SECTION END -->
 
