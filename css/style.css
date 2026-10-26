@@ -30,6 +30,10 @@
   --space-md: 16px;                   /* Jarak sedang (padding kartu, gap grid) */
   --space-lg: 24px;                   /* Jarak besar (gap layout, margin section) */
   --space-xl: 36px;                   /* Jarak ekstra besar (hero section) */
+  --space-1: var(--space-xs);         /* Alias token skala spacing 1 */
+  --space-2: var(--space-sm);         /* Alias token skala spacing 2 */
+  --space-3: var(--space-md);         /* Alias token skala spacing 3 */
+  --space-4: var(--space-lg);         /* Alias token skala spacing 4 */
 
   --radius-sm: 8px;                   /* Sudut kecil (input form, tombol, skip-link) */
   --radius-md: 16px;                  /* Sudut sedang (kartu produk, tabel, media) */
@@ -85,6 +89,11 @@ body {
   background-color: var(--color-bg);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Kontainer utama halaman agar tata letak konsisten di seluruh halaman */
 main,
 .page {
@@ -117,11 +126,11 @@ main,
    ---------------------------------------------------------- */
 .nav {
   background: var(--color-primary);
-  padding: var(--space-md) 32px;
+  padding: var(--space-md) var(--space-md);
   display: flex;
-  gap: var(--space-md);
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -140,8 +149,8 @@ main,
   margin: 0;
   padding: 0;
   display: flex;
-  gap: var(--space-sm);
-  align-items: center;
+  flex-direction: column;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
@@ -192,13 +201,13 @@ audio:focus-visible {
    ---------------------------------------------------------- */
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   gap: var(--space-lg);
   align-items: center;
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
   color: white;
-  padding: var(--space-xl);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
 }
 
 .hero--single {
@@ -212,6 +221,7 @@ audio:focus-visible {
 
 .hero-image {
   width: 100%;
+  height: auto;
   border-radius: var(--radius-md);
 }
 
@@ -225,7 +235,7 @@ audio:focus-visible {
 
 h1 {
   margin: 0;
-  font-size: 3rem;
+  font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
 }
 
 .lead {
@@ -358,7 +368,7 @@ footer {
 .product-grid,
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-md);
 }
 
@@ -392,6 +402,22 @@ footer {
 
 .card-actions a.button {
   color: #ffffff;
+}
+
+/* --- Pembungkus scroll tabel --- */
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-md);
+}
+
+.table-scroll table {
+  min-width: 40rem;
 }
 
 /* --- Tabel harga produk --- */
@@ -439,7 +465,6 @@ footer {
 
 /* --- Grid galeri foto --- */
 .gallery-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 20px;
 }
 
@@ -497,10 +522,11 @@ audio {
 .about-grid {
   display: grid;
   grid-template-areas:
-    "card1 image"
-    "card2 image"
-    "card3 image";
-  grid-template-columns: 1.1fr 0.9fr;
+    "card1"
+    "card2"
+    "card3"
+    "image";
+  grid-template-columns: 1fr;
   gap: var(--space-md);
   align-items: stretch;
   margin-top: var(--space-lg);
@@ -613,7 +639,7 @@ border-radius: var(--radius-sm);
 background: #fffdfb;
 color: var(--color-text);
 font-family: inherit;
-font-size: 15px;
+font-size: 16px;
 outline: none;
 transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
 background-color var(--transition-fast);
@@ -723,6 +749,8 @@ font-family: "Courier New", monospace;
 font-size: 14px;
 line-height: 1.7;
 white-space: pre-wrap;
+overflow-wrap: break-word;
+word-break: break-word;
 }
 
 /* ==========================================================
@@ -751,3 +779,47 @@ CATATAN AUDIT DEVTOOLS: TEMUAN KONFLIK CASCADE & SPECIFICITY
                      menang karena urutan kemunculan kode (source order) dan deklarasi
                      padding serta background memiliki bobot flag !important.
 ========================================================== */
+
+/* ==========================================================
+   BREAKPOINT BERBASIS KONTEN (Responsive Media Queries)
+   ========================================================== */
+@media (min-width: 42rem) {
+  .nav ul {
+    flex-direction: row;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-grid {
+    grid-template-areas:
+      "card1 image"
+      "card2 image"
+      "card3 image";
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+@media (min-width: 60rem) {
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) 32px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
