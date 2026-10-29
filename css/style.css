@@ -177,6 +177,15 @@ nav a:focus {
   color: var(--color-primary);
 }
 
+/* Penanda halaman aktif (active page indicator) */
+nav a[aria-current="page"],
+nav a.active,
+nav a[aria-current="page"]:hover,
+nav a.active:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
 /* ----------------------------------------------------------
    FOCUS INDICATOR (Keyboard Navigation)
    ---------------------------------------------------------- */
