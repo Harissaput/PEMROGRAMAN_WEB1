@@ -796,7 +796,7 @@ word-break: break-word;
   }
 }
 /* ==========================================================
-   10. PRODUK DINAMIS JAVASCRIPT P09
+   PRODUK DINAMIS JAVASCRIPT P09
    ========================================================== */
 
 .js-product-grid {
@@ -843,4 +843,17 @@ word-break: break-word;
 .stock-badge.empty {
   background-color: #fee2e2;
   color: #991b1b;
+}
+
+/* ==========================================================
+   PRODUK DINAMIS JAVASCRIPT P10
+   ========================================================== */
+.stock-badge.warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+#produk-unggulan {
+  font-weight: 700;
+  color: var(--color-primary, #6f3b1f);
 }
