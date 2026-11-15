@@ -15,8 +15,9 @@ const produkUmkm = [
   { nama: "americano", kategori: "Kopi", harga: 125000, stok: 4, unggulan: false },
 ];
 
-// 2. FUNCTION FORMAT RUPIAH
 
+
+// 2. FUNCTION FORMAT RUPIAH
 
 function formatRupiah(nilai) {
   return new Intl.NumberFormat("id-ID", {
@@ -145,8 +146,23 @@ function buatElemenProdukP11(produk) {
   }
   stock.textContent = status.label;
 
+  const removeButton = document.createElement("button");
+removeButton.type = "button";
+removeButton.textContent = "Sembunyikan";
+removeButton.classList.add("ghost-button");
+
+removeButton.addEventListener("click", () => {
+  card.remove();
+  produkStatusP11.textContent = "Satu kartu disembunyikan dari tampilan sementara.";
+});
+
+card.append(title, category, price, stock, removeButton);
+
+  
+
   card.append(title, category, price, stock);
   return card;
+
 }
 
 
@@ -199,8 +215,6 @@ tombolFilter.forEach((tombol) => {
     renderProdukP11(kategori);
   });
 });
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
